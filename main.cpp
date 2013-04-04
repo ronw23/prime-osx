@@ -154,13 +154,14 @@ main (int argc, char **argv)
 
     utilInitialize ();
     
-#ifdef OSX
-    OSXMain();
-#endif
 
 #ifndef NOGUI
-    if (noteye)
+    if (noteye) {
+#ifdef OSX
+        OSXMain();
+#endif
         I = startNotEye (argc, argv);
+    }
     else
 #endif
         I = startNCurses ();
