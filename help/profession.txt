@@ -1,0 +1,74 @@
+@CRACE AND PROFESSION@H
+
+
+@CHumans@H:
+
+@FAstronaut@H: TO-DO
+
+@FDetective@H: TO-DO
+
+@FNinja@H: TO-DO
+
+@FPsion@H: You're a scrawny freak.  A freak with strange mutant powers.
+  Momma always said not to drink radioactive waste, but you didn't
+  listen and now your DNA is supercharged. 
+
+@FQuarterback@H: Back on Earth, you thrill crowds with your athletic skill
+  and you have a cheerleader girlfriend.  But in space, you can be
+  savior of the universe!
+
+@FSoftware Engineer@H: Your Mountain Dew gut and carpal tunnel syndrome
+  put you at a physical disadvantage but at least you remembered to
+  bring your laptop computer along.  And your innate ability to notice
+  buggy equipment sure is handy.
+
+@FSpace Marine@H: You're one of the tough hombres that defends our planet
+  against aliens every night and day.  Your equipment is state of the
+  badass art, and you've got a badass attitude to match it.
+
+
+@COrcs@H:
+
+@FJanitor@H: You're used to being ignored by those with more glamorous job
+  titles, but it's you who keeps the galaxy turning, unclogging its
+  billions and billions of toilets.  You begin your quest with two
+  indispensable tools: a master keycard and monkey wrench.  Being an
+  orc allows you to use buggy equipment with ease.  Unfortunately it
+  only works for things you equip manually like armor and weapons.
+
+
+@CReticulans@H:
+  They come from a nearby galaxy.  All reticulans are telepaths.
+
+@FAbductor@H: You have a penchant for driving your saucer to planets
+  inhabited by unwary non-spacefaring races.  And then raeping them.
+
+@FDissident@H: You are one of the more corrupted member of your species.
+  Although not sexually deviant, you play urban poker with star
+  systems, and turn planets into giant computers.
+
+@FMastermind@H: You are even more evil than the previous two. You
+  masquerade as benevolent space brothers - to your own species
+  and others.  Why? Because of the inmense financial benefits you
+  can reap from them.
+
+
+@CYautja@H:
+
+@FHunter@H: At last chance to prove yourself!  After long and very
+  difficult training you are finally an adult and about to decorate
+  yourself with some freshly killed trophies.  You are equipped with
+  some superior Yautja technology.
+
+@COther@H:
+
+@FXel'Naga@H: Designing specimens was your daily job but you grew bored
+  and decided to explore the galaxy somewhat.  Your ship was caught
+  in a space-time anomaly.  Here you are, stranded on a lone asteroid
+  with nothing to help you.  Not even a piece of information.
+
+
+Some professions are just plain more difficult than others.  Probably
+the best roles for beginners are the Space Marine, the Yautja Hunter,
+the Ninja, the Janitor and the Software Engineer.  Xel'Naga are blind
+and ridiculously difficult.

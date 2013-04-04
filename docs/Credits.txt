@@ -1,0 +1,56 @@
+Developers of PRIME would like to thank the following people:
+
+NetHack Dev Team - creating NetHack
+Cyrus Dolph - writing ZapM
+Jeff Lait - encyclopedia code from POWDER
+Joseph Hewitt - code snippets from DeadCold
+Joseph Bradshaw - perfecting game texts
+Kyle Keenerd - maintaining primerl package for Arch Linux
+Zeno Rogue - maintaining Necklace of the Eye
+
+v2.1c
+
+Robert Barber - reporting a crash bug
+Zeno Rogue - reporting faulty source and Linux 64bit packages
+
+v2.1
+
+Jim at the roguetemple forums - for requesting swap command
+
+v1.11
+
+Soneblees at the roguetemple forums - for some very useful suggestions
+Barry Corrigan - honorary mention for reporting a crash bug and providing a fix
+   after it has been fixed on developers' side
+Roguelike Incubator team again for more feedback
+
+v1.10
+
+Roguelike Incubator team for lots of feedback and suggestions:
+  Jo, Kraflab, Zeno and Getter77
+
+v1.9a:
+Eugen Maksimov - found a crash bug by reformatting a floppy disk of reformat
+
+v1.9:
+Game Hunter - for his Lets play ZAPM series which inspired many improvements
+
+v1.8a:
+Robert Barber - reporting a crash bug
+
+v1.8:
+At the roguetemple forums:
+Skeletor and Jo - interface criticism
+Szopin - very precise bug report
+Itkachev - reminding about 64bit architecture incompatibility
+
+v1.7:
+
+At the zapm.org boards:
+Robot - detailed Ninja profession proposal
+Xist, Crash, Homan, Brendan Lythandrel, Org and DrSunglass for bug reports
+Anonymous guests for bug reports
+
+At the bay12 forums:
+Tilla, Cheeetar, Farce, Koliup, The Doctor and Leafsnail
+   for reporting 64bit architecture incompatibility

@@ -1,0 +1,61 @@
+@CMUTANT POWERS@H
+
+
+Mutant powers are somewhat weird abilities.  They are sensitive
+to your psionic aura which may be augmented or disrupted by
+some items you can wear.
+
+Every skill power invested in mutant power increases chance
+to use it by five percent points in addition to other effects
+gaining a skill in it might give.
+
+
+@FIllumination@H: Permanently lights up some area around you.
+  For every three skill points invested radius increases.
+
+@FDigestion@H: You can eat and digest virtually anything without
+  incurring any side effects bad or good.  This power comes
+  with super flexibility to eat items that you have equipped
+  but consuming worn eyewear, worn helmets and installed
+  cranial bionic implants is going to be impossible until they
+  are removed.  Mainly useful to get rid of some buggy stuff.
+
+@FHypnosis@H: With a gaze in the eye you can make others fall
+  fast asleep.
+
+@FRegeneration@H: You can focus your body to quickly mend wounds.
+
+@FOptic Blast@H: Emit a blast from eyes at distant target.  Skill
+  increases damage.
+
+@FHaste@H: While maintained you speed up considerably.  Skill points
+  give two additional points of speed.  Only first ten points
+  will grant bonus speed up.
+
+@FTelepathy@H: Allows you to hear other's thoughts and know of their
+  presence before actually meeting them.
+
+@FTremorsense@H: You can feel the disturbances caused by steps far
+  away and sense threat early.
+
+@FShoot Webs@H: Entangle your enemies in sticky webs.
+
+@FMental Blast@H: Directly assault a mind.  Skill amplifies damage.
+
+@FRestoration@H: Repair long term damage of body.
+
+@FAdrenaline Control@H: Adjust adrenaline levels in your body to
+  become stronger.  Grants four points of strength in exchange
+  for four points of psionics.
+
+@FX-Ray Vision@H: Your sight can penetrate nearby walls.  Skill does
+  not increase sight range.
+
+@FThe Voice@H: Command others to obey you.
+
+@FTeleport@H: Fold space to transport yourself far away.
+
+@FAutolysis@H: Supply psionic energy directly from your body's cells.
+
+@FPsionic Storm@H: Unleash massive psychic attack. This power is
+  costly.
