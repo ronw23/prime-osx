@@ -1,38 +1,39 @@
 #all: ../noteye
-all: ../libnoteye.so
+all: ../libnoteye.dylib
 
 #for development:
 #CFLAGS=-Wall -Werror
 #for release:
-CFLAGS=-O9
+SDLFLAGS=`sdl-config --cflags`
+CFLAGS=-O9 $(SDLFLAGS)
 
 #DEF=-DHYDRA -DLINUX -DOPENGL
-DEF=-DLINUX -DOPENGL
+DEF=-DLINUX -DOPENGL -DMAC
 
 #noteye: noteye.cpp noteye.h util.cpp screen.cpp tiles.cpp gfx.cpp linux.cpp image.cpp fpp.cpp font.cpp internal.cpp stream.cpp
 #	g++ noteye.cpp -o noteye -lSDL -lSDL_image -llua5.1 -lutil -DLINUX -lSDL_net -lz
 
 libnoteye.o: libnoteye.cpp noteye.h util.cpp screen.cpp tiles.cpp gfx.cpp linux.cpp image.cpp fpp.cpp font.cpp internal.cpp stream.cpp consout.cpp sound.cpp lua.cpp iso.cpp noteye-curses.h opengl.cpp drawtile.cpp
-	g++ -fpic -I/usr/include/lua5.1 libnoteye.cpp -c -o libnoteye.o $(CFLAGS) $(DEF)
+	g++ -fpic libnoteye.cpp -c -o libnoteye.o $(CFLAGS) $(DEF)
 
-../libnoteye.so: libnoteye.o
-	g++ -shared -Wl,-soname,libnoteye.so -o ../libnoteye.so libnoteye.o -lSDL -lSDL_image -llua5.1 -lutil -lSDL_mixer -lSDL_net -lGL -lGLU
+../libnoteye.dylib: libnoteye.o
+	g++ -shared -Wl,-install_name,libnoteye.dylib -o ../libnoteye.dylib libnoteye.o -framework SDL -framework SDL_image -llua -lutil -framework SDL_mixer -framework SDL_net -framework OpenGL -lz -lcurses
 
 hydra.o: noteye-curses.h ../hydra/classes.cpp ../hydra/hydra.cpp ../hydra/mainmenu.cpp ../hydra/ui.cpp ../hydra/tutorial.cpp ../hydra/weapons.cpp ../hydra/data.cpp ../hydra/save.cpp ../hydra/achieve.cpp ../hydra/utils.cpp ../hydra/level.cpp ../hydra/monster.cpp ../hydra/drawhydras.cpp
 	g++ ../hydra/hydra.cpp -c -o hydra.o -DNOTEYE $(CFLAGS)
 
-../noteye: ../libnoteye.so hydra.o noteye-main.cpp
-	g++ $(DEF) -Wl,-rpath,. -Wl,-rpath,/usr/share/noteye hydra.o noteye-main.cpp -o ../noteye ../libnoteye.so -lGL -lGLU
+../noteye: ../libnoteye.dylib hydra.o noteye-main.cpp
+	g++ $(DEF) -Wl,-rpath,. -Wl,-rpath,/usr/share/noteye hydra.o noteye-main.cpp -o ../noteye ../libnoteye.dylib -lGL -lGLU
 
-#../noteye: ../libnoteye.so noteye-main.cpp noteye.h
-#	g++ -Wl,-rpath,. noteye-main.cpp -o ../noteye ../libnoteye.so
+#../noteye: ../libnoteye.dylib noteye-main.cpp noteye.h
+#	g++ -Wl,-rpath,. noteye-main.cpp -o ../noteye ../libnoteye.dylib
 
 DESTDIR = /usr/share/noteye
 
 install: ../noteye
 	strip ../noteye
 	install -T -D -m 755 ../noteye "$(DESTDIR)/noteye"
-	install -T -D -m 755 ../libnoteye.so "$(DESTDIR)/libnoteye.so"
+	install -T -D -m 755 ../libnoteye.dylib "$(DESTDIR)/libnoteye.dylib"
 	install -D -m 755 calleri.sh "$(DESTDIR)/caller.sh"
 	install -D -m 755 rogue.sh "$(DESTDIR)/rogue"
 	mkdir -p $(DESTDIR)/gfx
@@ -61,5 +62,5 @@ clean:
 
 # uninstall will remove the global highscores!
 
-sample: sample.cpp ../libnoteye.so noteye.h noteye-curses.h
-	g++ -Wl,-rpath,. sample.cpp -o ../sample ../libnoteye.so
+sample: sample.cpp ../libnoteye.dylib noteye.h noteye-curses.h
+	g++ -Wl,-rpath,. sample.cpp -o ../sample ../libnoteye.dylib
