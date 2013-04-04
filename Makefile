@@ -6,7 +6,7 @@ Inventory.o Lore.o LoreHelp.o Mainframe.o MatterCompiler.o Map.o Menu.o      \
 Monster.o MonsterAI.o Mutant.o NCMenu.o NCUI.o Object.o ObjectParser.o       \
 OperatingSystem.o Options.o Path.o Profession.o RayGun.o Room.o SaveLoad.o   \
 Services.o Sewer.o Shop.o Skills.o SpecialLevel.o Tombstone.o Tool.o         \
-TwistyRooms.o Util.o Vat.o Vision.o Weapon.o Wreck.o main.o
+TwistyRooms.o Util.o Vat.o Vision.o Weapon.o Wreck.o main.o osx/macsupport.o
 NEOBJS = NEMenu.o NEUI.o
 GENFILES = Attack.cpp Attack.h Flavor.cpp Flavor.h MonsterIlk.cpp MonsterIlk.h\
 ObjectIlk.cpp ObjectIlk.h
@@ -18,7 +18,7 @@ PREFIX=
 BINDIR=$(PREFIX)/usr/games/bin
 MANDIR=$(PREFIX)/usr/share/man/man6
 DATADIR=$(PREFIX)/usr/games/share/$(PROGRAM)
-USERDIR=~/.config/$(PROGRAM)
+USERDIR=~/.config/$(PROGRAM)/
 SCOREDIR=$(PREFIX)/var/games/$(PROGRAM)
 
 # It is safe to leave this flag blank.
@@ -28,15 +28,15 @@ SCOREDIR=$(PREFIX)/var/games/$(PROGRAM)
 # a binary that should work on 32/64 bit intel-only mac osx leopard and later.
 #
 #OSXFLAGS=-arch i386 -mmacosx-version-min=10.5
-OSXFLAGS=
+OSXFLAGS=-DOSX
 
 #LDFLAGS=$(LDPATH) $(OSXFLAGS)
 LIBS=-lpanel -lcurses
-NELIBS=-lpanel -lcurses -lnoteye -lz -llua
+NELIBS=-lpanel -lcurses -lnoteye -lz -llua -framework Cocoa
 LDFLAGS=$(LDPATH) $(OSXFLAGS)
-NELDFLAGS=-L. -Xlinker -rpath=.
+NELDFLAGS=-L. -Xlinker 
 
-CXX=c++
+CXX=g++
 
 CXXFLAGS=-Wall -Wextra -pedantic -Wno-unused-parameter -O $(OSXFLAGS)
 
@@ -91,13 +91,13 @@ prepare:
 	mkdir -p build/$(PROGRAM)/shot
 	cp $(PROGRAM) build/$(PROGRAM)/
 #	cp docs/Guide.txt docs/Credits.txt build/$(PROGRAM)
-	cp config.lua libnoteye.so build/$(PROGRAM)
+	cp config.lua libnoteye.dylib build/$(PROGRAM)
 	cp -r lua gfx build/$(PROGRAM)
 	cp help/* build/$(PROGRAM)/user
 	cp data/* build/$(PROGRAM)/user
 
-$(PROGRAM): config.h libnoteye.so $(GENFILES) $(OBJS) $(NEOBJS)
-	c++ -g -o $(PROGRAM) $(LDFLAGS) $(NELDFLAGS) $(OBJS) $(NEOBJS) $(NELIBS)
+$(PROGRAM): config.h libnoteye.dylib $(GENFILES) $(OBJS) $(NEOBJS)
+	$(CXX) -g -o $(PROGRAM) $(LDFLAGS) $(NELDFLAGS) $(OBJS) $(NEOBJS) $(NELIBS)
 
 nogui:
 	echo "#define NOGUI" >> config.h
@@ -109,7 +109,7 @@ clean:
 	rm -f $(PROGRAM) *.o core
 
 cleaner: clean
-	rm -f support/encyclopedia2c noteye/libnoteye.o libnoteye.so
+	rm -f support/encyclopedia2c noteye/libnoteye.o libnoteye.dylib
 	cd support/tablemaker && $(MAKE) clean
 
 cleangen:
@@ -137,5 +137,5 @@ support/encyclopedia2c: support/encyclopedia2c.cpp
 	$(CXX) support/encyclopedia2c.cpp -o support/encyclopedia2c
 support/tablemaker/tablemaker:
 	cd support/tablemaker && $(MAKE)
-libnoteye.so:
+libnoteye.dylib:
 	cd noteye && $(MAKE)

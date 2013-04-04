@@ -15,6 +15,10 @@
 #include <sys/resource.h>
 #endif
 
+#ifdef OSX
+#include "osx/macsupport.h"
+#endif
+
 #include "Global.h"
 #include "Util.h"
 #include "Map.h"
@@ -149,6 +153,10 @@ main (int argc, char **argv)
         BOFH = true;
 
     utilInitialize ();
+    
+#ifdef OSX
+    OSXMain();
+#endif
 
 #ifndef NOGUI
     if (noteye)
