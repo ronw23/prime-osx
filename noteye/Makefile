@@ -4,7 +4,7 @@ all: ../libnoteye.dylib
 #for development:
 #CFLAGS=-Wall -Werror
 #for release:
-SDLFLAGS=`sdl-config --cflags`
+SDLFLAGS=-I/Library/Frameworks/SDL.framework/Headers
 CFLAGS=-O9 $(SDLFLAGS)
 
 #DEF=-DHYDRA -DLINUX -DOPENGL
