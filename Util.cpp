@@ -139,8 +139,8 @@ shLogFile::open ()
     name = NULL;
     name = getenv ("USER");
     if (!name) name = getenv ("USERNAME");
-    char dbgfilename[40];
-    snprintf (dbgfilename, 40, "%s/dbg.%s.txt", UserDir, name);
+    char dbgfilename[256];
+    snprintf (dbgfilename, 256, "%s/dbg.%s.txt", UserDir, name);
     mDbgFile = fopen (dbgfilename, "w");
     if (!mDbgFile) {
         fprintf (stderr, "Could not open %s.", dbgfilename);

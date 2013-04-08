@@ -28,3 +28,24 @@ void OSXMain()
 					[NSApplication sharedApplication];
 	}
 }
+
+const char* initSaveLocation() {
+	NSAutoreleasePool  *pool = [[NSAutoreleasePool alloc] init];
+	[ NSApplication sharedApplication ];
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSError *err;
+    
+    // Look up the full path to the user's Application Support folder (usually ~/Library/Application Support/).
+    NSString *basePath = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) objectAtIndex: 0];
+    
+    // Use a folder under Application Support named after the application.
+    NSString *appName = [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleName"];
+    NSString *supportPath = [basePath stringByAppendingPathComponent: appName];
+    
+    // Create our folder the first time it is needed.
+    if (![manager fileExistsAtPath: supportPath]) {
+        [manager createDirectoryAtPath:supportPath withIntermediateDirectories:YES attributes:nil error:&err];
+    }
+    
+    return [supportPath UTF8String];
+}

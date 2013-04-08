@@ -13,6 +13,7 @@ extern "C"
 {
 #endif
 void OSXMain();
+const char *initSaveLocation();
 #ifdef __cplusplus
 }
 #endif

@@ -14,6 +14,9 @@
 
 #include "NEUI.h"
 #include "Hero.h"
+#ifdef __APPLE__
+extern char** NXArgv;
+#endif
 
 shInterface *
 startNotEye (int argc, char **argv)
@@ -219,9 +222,6 @@ shNotEyeInterface::~shNotEyeInterface ()
 void
 shNotEyeInterface::runMainLoop ()
 {
-#ifdef OSX
-    setenv("NOTEYEDIR", "../Resources/", 1);
-#endif
     noteye_run ("lua/prime.lua", true);
 }
 
