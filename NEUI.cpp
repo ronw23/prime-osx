@@ -219,6 +219,9 @@ shNotEyeInterface::~shNotEyeInterface ()
 void
 shNotEyeInterface::runMainLoop ()
 {
+#ifdef OSX
+    setenv("NOTEYEDIR", "../Resources/", 1);
+#endif
     noteye_run ("lua/prime.lua", true);
 }
 
