@@ -1,7 +1,12 @@
+if not noteyedir then
+  noteyedir = (os.getenv("NOTEYEDIR") or ".").."/"
+  end
+
+
 if not noteyeloaded then
   threaded = false
   game_to_launch = "prime"
-  dofile "./lua/noteye.lua"
+  dofile (noteyedir .. "./lua/noteye.lua")
   return
   end
 

@@ -222,6 +222,10 @@ shNotEyeInterface::~shNotEyeInterface ()
 void
 shNotEyeInterface::runMainLoop ()
 {
+#ifdef OSX
+    setenv("NOTEYEDIR", DATADIR, 1);
+    setenv("LUA_PATH", USERDIR, 1);
+#endif
     noteye_run ("lua/prime.lua", true);
 }
 

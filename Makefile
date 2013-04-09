@@ -127,10 +127,9 @@ prepare-osx:
 	install_name_tool -change libnoteye.dylib "@executable_path/../Frameworks/libnoteye.dylib"  "build/$(PROGRAM_OSX)/Contents/MacOS/$(PROGRAM)" 
 	install_name_tool -change /usr/local/lib/liblua.5.1.5.dylib "@executable_path/../Frameworks/liblua.5.1.5.dylib"  "build/$(PROGRAM_OSX)/Contents/MacOS/$(PROGRAM)" 
 	cp osx/Info.plist "build/$(PROGRAM_OSX)/Contents"
-	cp -r lua gfx "build/$(PROGRAM_OSX)/Contents/MacOS/"
-	#sed -i '' -e "s/lua\/noteye/..\/Resources\/lua\/noteye/g" "build/$(PROGRAM_OSX)/Contents/Resources/lua/prime.lua"
-	#sed -i '' -e "s/config.lua/..\/Resources\/config.lua/g" "build/$(PROGRAM_OSX)/Contents/Resources/lua/noteye.lua"
-	cp config.lua "build/$(PROGRAM_OSX)/Contents/MacOS/"
+	cp -r lua gfx "build/$(PROGRAM_OSX)/Contents/Resources/"
+	cp config.lua "build/$(PROGRAM_OSX)/Contents/Resources/lua"
+	sed -i '' -e "s/\"config.lua\"/noteyedir..\"lua\/config.lua\"/g" "build/$(PROGRAM_OSX)/Contents/Resources/lua/noteye.lua"
 	cp help/* "build/$(PROGRAM_OSX)/Contents/Resources"
 	cp data/* "build/$(PROGRAM_OSX)/Contents/Resources"
 
