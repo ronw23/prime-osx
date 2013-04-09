@@ -18,8 +18,8 @@ void OSXMain()
 	NSAutoreleasePool  *pool = [[NSAutoreleasePool alloc] init];
 	[ NSApplication sharedApplication ];
 	[ NSApp setMainMenu:[[NSMenu alloc] init] ];
-	
-	{
+    
+ 	{
 		CPSProcessSerNum PSN;
 		/* Tell the dock about us */
 		if (!CPSGetCurrentProcess(&PSN))
@@ -27,6 +27,20 @@ void OSXMain()
 				if (!CPSSetFrontProcess(&PSN))
 					[NSApplication sharedApplication];
 	}
+}
+
+const char* initResourcesLocation() {
+    CFURLRef url;
+    static UInt8 path[4096];
+ 
+    // Get the URL to the application’s PlugIns directory.
+    url = CFBundleCopyResourcesDirectoryURL(CFBundleGetMainBundle());
+ 
+    CFURLGetFileSystemRepresentation( url, true, path, 4096 );
+ 
+    // Release the CF objects when done with them.
+    CFRelease( url );
+    return path;
 }
 
 const char* initSaveLocation() {

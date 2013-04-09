@@ -222,10 +222,12 @@ extern shVector <shMapLevel *> Maze;  /* all the levels */
 extern shFlags Flags;
 
 
+#ifndef OSX
 #ifndef DATADIR
 #define DATADIR "user"
 #define USERDIR "user"
 #define SCOREDIR "user"
+#endif
 #endif
 
 #define HERO_NAME_LENGTH 14

@@ -29,7 +29,7 @@ SCOREDIR=$(PREFIX)/var/games/$(PROGRAM)
 # a binary that should work on 32/64 bit intel-only mac osx leopard and later.
 #
 #OSXFLAGS=-arch i386 -mmacosx-version-min=10.5
-OSXFLAGS=-DOSX
+OSXFLAGS=-DOSX -D MAC
 
 #LDFLAGS=$(LDPATH) $(OSXFLAGS)
 LIBS=-lpanel -lcurses
@@ -54,7 +54,7 @@ osx-user:
 	echo "#ifndef _CONFIG_H" >> config.h
 	echo "#define _CONFIG_H" >> config.h
 	echo "#include \"osx/macsupport.h\"" >> config.h
-	echo "#define DATADIR \"user\"" >> config.h
+	echo "static const char *DATADIR = initResourcesLocation();" >> config.h
 	echo "static const char *SCOREDIR = initSaveLocation();" >> config.h
 	echo "#define USERDIR SCOREDIR" >> config.h
 	echo "#endif" >> config.h
@@ -115,8 +115,8 @@ prepare-osx:
 	mkdir -p "build/$(PROGRAM_OSX)/Contents/MacOS"
 	mkdir -p "build/$(PROGRAM_OSX)/Contents/Frameworks"
 	mkdir -p "build/$(PROGRAM_OSX)/Contents/Resources"
-	mkdir -p "build/$(PROGRAM_OSX)/Contents/MacOS/user"
-	mkdir -p "build/$(PROGRAM_OSX)/Contents/MacOS/shot"
+	mkdir -p "build/$(PROGRAM_OSX)/Contents/Resources/user"
+	mkdir -p "build/$(PROGRAM_OSX)/Contents/Resources/shot"
 	cp $(PROGRAM) "build/$(PROGRAM_OSX)/Contents/MacOS/$(PROGRAM)"
 	cp libnoteye.dylib "build/$(PROGRAM_OSX)/Contents/Frameworks"
 	cp -f /usr/local/lib/liblua.5.1.5.dylib "build/$(PROGRAM_OSX)/Contents/Frameworks"
@@ -131,8 +131,8 @@ prepare-osx:
 	#sed -i '' -e "s/lua\/noteye/..\/Resources\/lua\/noteye/g" "build/$(PROGRAM_OSX)/Contents/Resources/lua/prime.lua"
 	#sed -i '' -e "s/config.lua/..\/Resources\/config.lua/g" "build/$(PROGRAM_OSX)/Contents/Resources/lua/noteye.lua"
 	cp config.lua "build/$(PROGRAM_OSX)/Contents/MacOS/"
-	cp help/* "build/$(PROGRAM_OSX)/Contents/MacOS/user"
-	cp data/* "build/$(PROGRAM_OSX)/Contents/MacOS/user"
+	cp help/* "build/$(PROGRAM_OSX)/Contents/Resources"
+	cp data/* "build/$(PROGRAM_OSX)/Contents/Resources"
 
 $(PROGRAM): config.h libnoteye.dylib $(GENFILES) $(OBJS) $(NEOBJS)
 	$(CXX) -g -o $(PROGRAM) $(LDFLAGS) $(NELDFLAGS) $(OBJS) $(NEOBJS) $(NELIBS)

@@ -14,6 +14,7 @@ extern "C"
 #endif
 void OSXMain();
 const char *initSaveLocation();
+const char* initResourcesLocation();
 #ifdef __cplusplus
 }
 #endif
