@@ -33,7 +33,7 @@ OSXFLAGS=-DOSX -D MAC
 
 #LDFLAGS=$(LDPATH) $(OSXFLAGS)
 LIBS=-lpanel -lcurses
-NELIBS=-lpanel -lcurses -lnoteye -lz -llua -framework Cocoa
+NELIBS=-lpanel -lcurses -lnoteye -lz -framework Cocoa
 LDFLAGS=$(LDPATH) $(OSXFLAGS)
 NELDFLAGS=-L. -Xlinker 
 
@@ -125,7 +125,7 @@ prepare-osx:
 	cp -r /Library/Frameworks/SDL_mixer.framework "build/$(PROGRAM_OSX)/Contents/Frameworks"
 	cp -r /Library/Frameworks/SDL_image.framework "build/$(PROGRAM_OSX)/Contents/Frameworks"
 	install_name_tool -change libnoteye.dylib "@executable_path/../Frameworks/libnoteye.dylib"  "build/$(PROGRAM_OSX)/Contents/MacOS/$(PROGRAM)" 
-	install_name_tool -change /usr/local/lib/liblua.5.1.5.dylib "@executable_path/../Frameworks/liblua.5.1.5.dylib"  "build/$(PROGRAM_OSX)/Contents/MacOS/$(PROGRAM)" 
+	install_name_tool -change /usr/local/lib/liblua.5.1.5.dylib "liblua.5.1.5.dylib"  "build/$(PROGRAM_OSX)/Contents/Frameworks/libnoteye.dylib" 
 	cp osx/Info.plist "build/$(PROGRAM_OSX)/Contents"
 	cp -r lua gfx "build/$(PROGRAM_OSX)/Contents/Resources/"
 	cp config.lua "build/$(PROGRAM_OSX)/Contents/Resources/lua"
