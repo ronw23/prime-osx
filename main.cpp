@@ -145,6 +145,12 @@ main (int argc, char **argv)
         case 'N': break; /* Ignore.  This option is for NotEye frontend. */
         case '?':
         default:
+#ifdef OSX
+            if (strncmp("-psn_0_", argv[1], 7) == 0) {
+                break;
+            }
+#endif
+            debug.log("usage:%s", argv[1]);
             usage ();
             return 0;
         }
